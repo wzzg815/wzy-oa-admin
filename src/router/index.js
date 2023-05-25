@@ -54,22 +54,47 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
-   {
+  {
     path: '/system',
     component: Layout,
-    meta: { title: '系统管理', icon: 'el-icon-s-tools' },
+    meta: {
+      title: '系统管理',
+      icon: 'el-icon-s-tools'
+    },
     alwaysShow: true,
     children: [
       {
         path: 'sysRole',
-        name: '角色管理',
         component: () => import('@/views/system/sysRole/list'),
-        meta: { title: '角色管理', icon: 'el-icon-s-help' }
-      },
+        meta: {
+          title: '角色管理',
+          icon: 'el-icon-s-help'
+        }
+      }
     ]
   },
-/** 
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/table',
+    name: 'Example',
+    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Table', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+
   {
     path: '/form',
     component: Layout,
@@ -152,7 +177,7 @@ export const constantRoutes = [
       }
     ]
   },
-*/
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
