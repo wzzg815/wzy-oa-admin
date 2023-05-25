@@ -4,6 +4,19 @@
 import request from "@/utils/request";
 const api_name = "/admin/system/sysRole";
 export default {
+  getRoles(adminId) {
+    return request({
+      url: `${api_name}/toAssign/${adminId}`,
+      method: 'get'
+    })
+  },
+  assignRoles(assginRoleVo) {
+    return request({
+      url: `${api_name}/doAssign`,
+      method: 'post',
+      data: assginRoleVo
+    })
+  },
   // 根据id获取角色信息
   getPageList(page, limit, searchObj) {
     return request({
