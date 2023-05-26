@@ -32,6 +32,7 @@
           <el-button class="btn-add" size="mini" @click="batchRemove()"
             >批量删除</el-button
           >
+          
         </el-row>
       </el-form>
     </div>
@@ -75,6 +76,7 @@
             @click="removeDataById(scope.row.id)"
             title="删除"
           />
+          <el-button type="warning" icon="el-icon-baseball" size="mini" @click="showAssignAuth(scope.row)" title="分配权限"/>
         </template>
       </el-table-column>
     </el-table>
@@ -144,6 +146,10 @@ export default {
   },
   //定义方法
   methods: {
+    //当点击搜索按钮的时候调用跳出路由并传递参数
+    showAssignAuth(row) {
+  this.$router.push('/system/assignAuth?id='+row.id+'&roleName='+row.roleName);
+},
     // 当多选选项发生变化的时候调用
     handleSelectionChange(selection) {
       console.log(selection);
